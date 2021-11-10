@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazarAPI", "BazarAPI\BazarAPI.csproj", "{FCF57783-15E2-4E29-B002-CAFC209900A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogServer", "BazarAPI\CatalogServer.csproj", "{FCF57783-15E2-4E29-B002-CAFC209900A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderServer", "OrderServer\OrderServer.csproj", "{7EA41F41-3233-4CFF-96C6-E0944CC6401E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FCF57783-15E2-4E29-B002-CAFC209900A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCF57783-15E2-4E29-B002-CAFC209900A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCF57783-15E2-4E29-B002-CAFC209900A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA41F41-3233-4CFF-96C6-E0944CC6401E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA41F41-3233-4CFF-96C6-E0944CC6401E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA41F41-3233-4CFF-96C6-E0944CC6401E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA41F41-3233-4CFF-96C6-E0944CC6401E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
