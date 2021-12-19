@@ -30,6 +30,18 @@ namespace CatalogServer
             services.AddEntityFrameworkSqlite().AddDbContext<CatalogDbContext>(options => options.UseSqlite("Data Source=Bazar.db"));
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IBookService, BookService>();
+            services.AddSignalR();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    //.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .SetIsOriginAllowed((hosts) => true));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,9 +61,12 @@ namespace CatalogServer
 
             app.UseAuthorization();
 
+            app.UseCors("CorsPolicy");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<InformHub>("/notify");
             });
         }
     }

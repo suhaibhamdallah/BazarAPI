@@ -1,6 +1,7 @@
 ﻿using CatalogServer.Models;
 using CatalogServer.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,10 +11,13 @@ namespace CatalogServer.Controllers
     public class CatalogController : ControllerBase
     {
         private readonly IBookService _bookService;
+        private IHubContext<InformHub> _informHub;
 
-        public CatalogController(IBookService bookService)
+        public CatalogController(IBookService bookService, IHubContext<InformHub> hubContext)
         {
             _bookService = bookService;
+
+            _informHub = hubContext;
         }
 
         [HttpGet()]
@@ -41,6 +45,7 @@ namespace CatalogServer.Controllers
         [Route("update")]
         public async Task<IActionResult> UpdateBook([FromBody] BookForPatch bookForPatch)
         {
+            await _informHub.Clients.All.SendAsync("ReceiveMessage", bookForPatch.Id.ToString());
             _bookService.UpdateBook(bookForPatch.Id);
             return NoContent();
         }
